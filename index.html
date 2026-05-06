@@ -4,61 +4,122 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Sobolo by Hamdia — Fresh Sobolo Daily</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
 <style>
   :root {
     --hibiscus: #9B1B30;
-    --hibiscus-light: #F5E6E9;
-    --hibiscus-dark: #6B0F1F;
     --gold: #C8922A;
-    --gold-light: #FDF3E3;
     --cream: #FAF7F2;
     --text: #1A1A1A;
-    --text-muted: #6B6B6B;
     --white: #FFFFFF;
     --border: #E8E0D5;
-    --success: #2D7A4F;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); }
 
   nav {
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
+    background: white;
+    padding: 1.2rem 8%;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    height: 64px;
+    align-items: center;
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
   }
-  .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--hibiscus); letter-spacing: -0.5px; }
-  .logo span { color: var(--gold); font-style: italic; }
+  .logo { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--hibiscus); font-weight: 700; }
 
   .hero {
+    background: linear-gradient(135deg, var(--hibiscus), #C41E3D);
+    color: white;
+    padding: 7rem 8% 5rem;
+    text-align: center;
+  }
+  .hero-tag { background: rgba(255,255,255,0.18); padding: 0.7rem 1.8rem; border-radius: 50px; display: inline-block; margin-bottom: 1.5rem; font-size: 0.95rem; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 7vw, 5.5rem); line-height: 1.05; margin-bottom: 1rem; }
+  .hero p { font-size: 1.25rem; max-width: 650px; margin: 0 auto; }
+
+  .btn {
+    padding: 1rem 2.2rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    margin: 0.6rem;
+  }
+  .btn-primary { background: white; color: var(--hibiscus); }
+  .btn-secondary { background: transparent; color: white; border: 2px solid white; }
+
+  .section { padding: 6rem 8%; max-width: 1300px; margin: 0 auto; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 3rem; text-align: center; margin-bottom: 0.8rem; }
+  .section-sub { text-align: center; max-width: 700px; margin: 0 auto 4rem; color: #555; font-size: 1.1rem; }
+
+  .flavors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+  }
+  .flavor-card {
+    background: white;
+    border-radius: 24px;
+    padding: 2.5rem 1.8rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.4s ease;
+  }
+  .flavor-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(155,27,48,0.18);
+  }
+  .flavor-emoji { font-size: 4rem; margin-bottom: 1.2rem; }
+  .flavor-name { font-size: 1.5rem; font-weight: 700; color: var(--hibiscus); margin-bottom: 0.6rem; }
+  .flavor-desc { color: #666; line-height: 1.5; margin-bottom: 1rem; }
+  .flavor-price { color: var(--gold); font-size: 1.25rem; font-weight: 700; }
+
+  #order { background: white; }
+  .order-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    padding: 3rem;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  }
+  .order-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.8rem;
+  }
+  .form-group { display: flex; flex-direction: column; }
+  .form-group.full { grid-column: 1 / -1; }
+  label { margin-bottom: 0.6rem; font-weight: 500; color: #444; }
+  input, select, textarea {
+    padding: 1.1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    font-size: 1.05rem;
+  }
+  .btn-submit {
     background: var(--hibiscus);
     color: white;
-    padding: 6rem 2rem 5rem;
-    text-align: center;
-    position: relative;
+    padding: 1.3rem;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    margin-top: 1rem;
+    width: 100%;
   }
-  .hero-tag { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; font-size: 0.75rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 20px; margin-bottom: 1.5rem; }
-  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.15; margin-bottom: 1rem; }
-  .hero h1 em { font-style: italic; color: #FAC775; }
-  .hero p { font-size: 1.1rem; opacity: 0.85; max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.7; }
 
-  .btn { padding: 0.75rem 2rem; border-radius: 32px; font-weight: 500; cursor: pointer; border: none; }
-  .btn-primary { background: white; color: var(--hibiscus); }
-  .btn-secondary { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.7); }
-  .btn-submit { background: var(--hibiscus); color: white; width: 100%; padding: 1rem; font-size: 1.1rem; }
+  .toast {
+    position: fixed; bottom: 30px; right: 30px; background: #1a1a1a; color: white;
+    padding: 1rem 1.8rem; border-radius: 12px; display: none; z-index: 1000;
+  }
 </style>
 </head>
 <body>
 
-<!-- ==================== CONFIG - ONLY EDIT THIS SECTION ==================== -->
 <script>
 const CONFIG = {
   businessName: "Sobolo by Hamdia",
@@ -66,59 +127,44 @@ const CONFIG = {
   tagline: "🌺 Handcrafted in Gambaga",
   whatsappNumber: "0594311150",
   mainHeading: "Fresh Sobolo,<br><em>Every Single Day</em>",
-  description: "Real hibiscus. Real ginger. Real love. Hamdia's Sobolo is made fresh each morning in Gambaga."
+  description: "Real hibiscus. Real ginger. Real love. Made fresh every morning in Gambaga."
 };
 </script>
-<!-- ========================================================== -->
 
 <nav>
-  <div class="logo" id="nav-logo">Sobolo <span>by Hamdia</span></div>
-  <button class="btn" style="background:var(--hibiscus); color:white;" onclick="window.open('https://wa.me/233' + CONFIG.whatsappNumber, '_blank')">
+  <div class="logo">Sobolo <span>by Hamdia</span></div>
+  <button class="btn" style="background:var(--hibiscus);color:white;" onclick="window.open('https://wa.me/233'+CONFIG.whatsappNumber,'_blank')">
     Order on WhatsApp
   </button>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-tag" id="hero-tag"></div>
   <h1 id="main-heading"></h1>
   <p id="hero-desc"></p>
   <div>
     <button class="btn btn-primary" onclick="scrollTo('#order')">Place Your Order</button>
-    
+    <button class="btn btn-secondary" onclick="downloadFlyer()">📥 Download Flyer</button>
   </div>
 </section>
 
-<!-- FLAVOURS, ORDER FORM, DASHBOARD, EXPENSES - (Full original functionality) -->
-<!-- I kept your full original design and JavaScript -->
-
 <section class="section" id="flavors">
-  <div class="section-label">What We Offer</div>
-  <h2 class="section-title">Pick Your Flavour</h2>
-  <p class="section-sub">All drinks are brewed fresh daily with dried hibiscus petals, ginger, cloves, and a touch of sweetness.</p>
+  <h2 class="section-title">Our Flavours</h2>
+  <p class="section-sub">Freshly brewed daily with love in Gambaga</p>
   <div class="flavors-grid" id="flavors-grid"></div>
 </section>
 
-<!-- ORDER FORM -->
-<section id="order">
-  <div class="order-inner">
-    <div class="section-label">Place an Order</div>
-    <h2 class="section-title">Order Before She Leaves 🏠</h2>
-    <p class="section-sub">Fill in your details so Hamdia knows exactly how many bottles to prepare today.</p>
-    
+<section id="order" class="section">
+  <div class="order-container">
+    <h2 class="section-title" style="text-align:center;">Place Your Order</h2>
+    <p class="section-sub">Fill in your details and Hamdia will prepare it fresh</p>
+
     <div class="order-form-grid">
-      <div class="form-group">
-        <label>Your Name</label>
-        <input type="text" id="o-name" placeholder="e.g. Abena Mensah" />
-      </div>
-      <div class="form-group">
-        <label>Phone / WhatsApp</label>
-        <input type="tel" id="o-phone" placeholder="e.g. 0594311150" />
-      </div>
-      <div class="form-group">
-        <label>Flavour</label>
+      <div class="form-group"><label>Your Name</label><input type="text" id="o-name" placeholder="e.g. Abena Mensah"></div>
+      <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" id="o-phone" placeholder="0594311150"></div>
+      <div class="form-group"><label>Flavour</label>
         <select id="o-flavor">
-          <option value="">-- Choose flavour --</option>
+          <option value="">-- Choose Flavour --</option>
           <option>Classic Sobolo</option>
           <option>Ginger Blast</option>
           <option>Pineapple Sobolo</option>
@@ -126,28 +172,19 @@ const CONFIG = {
           <option>Ginger + Lemon Mix</option>
         </select>
       </div>
-      <div class="form-group">
-        <label>Quantity (bottles)</label>
-        <input type="number" id="o-qty" min="1" max="20" placeholder="1" />
-      </div>
-      <div class="form-group">
-        <label>Size</label>
+      <div class="form-group"><label>Quantity</label><input type="number" id="o-qty" min="1" value="1"></div>
+      <div class="form-group"><label>Size</label>
         <select id="o-size">
           <option>Small (500ml) — GH₵8</option>
           <option>Large (1 litre) — GH₵15</option>
           <option>Family Pack (2L) — GH₵25</option>
         </select>
       </div>
-      <div class="form-group">
-        <label>Delivery / Pickup Area</label>
-        <input type="text" id="o-location" placeholder="e.g. Gambaga, Nalerigu..." />
-      </div>
+      <div class="form-group"><label>Delivery Area</label><input type="text" id="o-location" placeholder="Gambaga"></div>
+      <div class="form-group full"><label>Special Request (Optional)</label><textarea id="o-note" rows="3" placeholder="Less sugar, extra ginger..."></textarea></div>
+      
       <div class="form-group full">
-        <label>Any special requests?</label>
-        <textarea id="o-note" placeholder="e.g. less sugar, extra ginger..."></textarea>
-      </div>
-      <div class="form-group full">
-        <button class="btn-submit" onclick="submitOrder()">✔ Submit My Order</button>
+        <button class="btn btn-submit" onclick="submitOrder()">Submit My Order ✅</button>
       </div>
     </div>
   </div>
@@ -155,63 +192,50 @@ const CONFIG = {
 
 <div class="toast" id="toast"></div>
 
-<footer>
-  Made with 🌺 for <strong>Sobolo by Hamdia</strong> · Gambaga, Ghana
+<footer style="background:#6B0F1F; color:white; text-align:center; padding:3.5rem 1rem;">
+  Made with 🌺 for <strong>Sobolo by Hamdia</strong> • Gambaga, Ghana<br><br>
+  WhatsApp: <strong>059 431 1150</strong>
 </footer>
 
 <script>
-// Apply Configuration
+// Apply Config
 document.getElementById('hero-tag').textContent = CONFIG.tagline;
 document.getElementById('main-heading').innerHTML = CONFIG.mainHeading;
 document.getElementById('hero-desc').textContent = CONFIG.description;
 
-// Flavours
 const flavours = [
-  { emoji:"🌺", name:"Classic Sobolo", desc:"Pure hibiscus with cloves and a whisper of ginger.", price:"From GH₵3" },
-  { emoji:"🔥", name:"Ginger Blast", desc:"Double ginger, extra kick.", price:"From GH₵3" },
-  { emoji:"🍍", name:"Pineapple Sobolo", desc:"Tropical sweetness meets hibiscus.", price:"From GH₵3" },
-  { emoji:"🍋", name:"Lemon Sobolo", desc:"Bright and refreshing.", price:"From GH₵3" },
-  { emoji:"✨", name:"Ginger + Lemon Mix", desc:"Our best-seller.", price:"From GH₵3" },
+  { emoji:"🌺", name:"Classic Sobolo", desc:"Pure hibiscus with cloves and ginger", price:"From GH₵8" },
+  { emoji:"🔥", name:"Ginger Blast", desc:"Strong ginger kick for energy", price:"From GH₵8" },
+  { emoji:"🍍", name:"Pineapple Sobolo", desc:"Sweet tropical flavour", price:"From GH₵10" },
+  { emoji:"🍋", name:"Lemon Sobolo", desc:"Fresh citrus zing", price:"From GH₵10" },
+  { emoji:"✨", name:"Ginger + Lemon Mix", desc:"Our most popular blend", price:"From GH₵10" }
 ];
 
 const grid = document.getElementById('flavors-grid');
 flavours.forEach(f => {
-  grid.innerHTML += `<div class="flavor-card"><span class="flavor-emoji">${f.emoji}</span><div class="flavor-name">${f.name}</div><div class="flavor-desc">${f.desc}</div><div class="flavor-price">${f.price}</div></div>`;
+  grid.innerHTML += `<div class="flavor-card"><div class="flavor-emoji">${f.emoji}</div><div class="flavor-name">${f.name}</div><div class="flavor-desc">${f.desc}</div><div class="flavor-price">${f.price}</div></div>`;
 });
 
 function scrollTo(id) { document.querySelector(id).scrollIntoView({ behavior: 'smooth' }); }
 
 function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.style.position = "fixed";
-  t.style.bottom = "20px";
-  t.style.right = "20px";
-  t.style.background = "#333";
-  t.style.color = "white";
-  t.style.padding = "1rem 1.5rem";
-  t.style.borderRadius = "10px";
-  t.style.display = "block";
-  setTimeout(() => t.style.display = "none", 3000);
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.style.display = 'block';
+  setTimeout(() => toast.style.display = 'none', 4000);
 }
 
 function submitOrder() {
-  const name = document.getElementById('o-name').value.trim();
-  const phone = document.getElementById('o-phone').value.trim();
-  const flavor = document.getElementById('o-flavor').value;
-  
-  if (!name || !phone || !flavor) {
-    showToast('⚠️ Please fill Name, Phone and Flavour');
+  if (!document.getElementById('o-name').value.trim() || !document.getElementById('o-phone').value.trim()) {
+    showToast("⚠️ Please enter your name and phone number");
     return;
   }
-  showToast('✅ Order submitted successfully! Hamdia will prepare it.');
-  // Clear form
-  document.getElementById('o-name').value = '';
-  document.getElementById('o-phone').value = '';
-  document.getElementById('o-flavor').value = '';
+  showToast("✅ Order submitted successfully! Hamdia will contact you.");
 }
 
-
+function downloadFlyer() {
+  showToast("📸 Flyer feature coming soon...");
+}
 </script>
 </body>
 </html>
